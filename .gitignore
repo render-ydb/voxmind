@@ -1,0 +1,7 @@
+node_modules/
+dist/
+out/
+models/
+*.dmg
+*.zip
+.DS_Store

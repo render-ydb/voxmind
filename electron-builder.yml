@@ -1,0 +1,38 @@
+appId: com.voxmind.app
+productName: VoxMind
+directories:
+  buildResources: resources
+  output: dist
+files:
+  - "!**/.vscode/*"
+  - "!src/*"
+  - "!electron.vite.config.*"
+  - "!{.eslintignore,.eslintrc.*,*.md}"
+  - "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}"
+extraResources:
+  - from: resources
+    to: .
+    filter:
+      - "tray.png"
+      - "tray@2x.png"
+asarUnpack:
+  - "node_modules/sherpa-onnx-node/**"
+  - "node_modules/sherpa-onnx-darwin-*/**"
+  - "node_modules/node-llama-cpp/**"
+afterSign: ./scripts/fix-universal-sign.js
+mac:
+  icon: resources/icon.png
+  category: public.app-category.utilities
+  identity: null
+  mergeASARs: false
+  x64ArchFiles: "**/node_modules/{@node-llama-cpp,@reflink,sherpa-onnx-darwin-arm64,sherpa-onnx-darwin-x64,sherpa-onnx-node}/**"
+  target:
+    - target: dmg
+      arch:
+        - universal
+  entitlementsInherit: entitlements.mac.plist
+  extendInfo:
+    LSUIElement: true
+    CFBundleShortVersionString: ${version}
+dmg:
+  artifactName: "${name}-${version}-${arch}.${ext}"
