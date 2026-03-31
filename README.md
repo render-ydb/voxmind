@@ -2,6 +2,10 @@
 
 A macOS menu bar voice input app that runs fully on-device offline, with speech recognition plus optional LLM correction—turn speech into text and paste it into any app.
 
+## Demo
+
+![demo](./demo.gif)
+
 ## Project architecture
 
 ```
